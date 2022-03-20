@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_home.xml" value="0.2169230769230769" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_home_app.xml" value="0.2169230769230769" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_logout.xml" value="0.2203125" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_category.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_layout_main.xml" value="0.25" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_cart.xml" value="0.1" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_home_app.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_remarkable.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_info.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_password.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/layout_header_info_user.xml" value="0.25" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/menu/menu_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/menu/menu_navigation.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

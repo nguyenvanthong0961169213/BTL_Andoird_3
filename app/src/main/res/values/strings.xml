@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">BTL_ordering-food_app_2</string>
+    <string name="name">Name</string>
+    <string name="user_name">User_Name</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone_Number</string>
+    <string name="sex">Sex</string>
+    <string name="update_info_user">Update</string>
+    <string name="logout">Logout</string>
+
+    <string name="navigation_drawer_open">Open_navigation_drawer</string>
+    <string name="navigation_drawer_close">Close_navigation_drawer</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_update_info_user">Update_Info</string>
+    <string name="navigation_update_password">Update_Password</string>
+    <string name="navigation_logout">Logout</string>
+    <string name="navigation_remarkable">Remarkable</string>
+    <string name="navigation_cart">Cart</string>
+    <string name="navigation_fragment">Navigation</string>
+
+
+    <string name="category_name">Category_name</string>
+
+</resources>

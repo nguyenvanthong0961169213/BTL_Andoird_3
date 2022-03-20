@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <item android:title="@string/navigation_fragment">
+       <menu>
+           <group android:checkableBehavior="single">
+               android:icon="@drawable/icon_remarkable"/>
+               <item android:id="@+id/navigation_home_app"
+               android:title="@string/navigation_home"
+               android:icon="@drawable/icon_home"/>
+               <item android:id="@+id/navigation_update_info_user"
+               android:title="@string/navigation_update_info_user"
+               android:icon="@drawable/icon_update_info"/>
+               <item android:id="@+id/navigation_update_password"
+               android:title="@string/navigation_update_password"
+               android:icon="@drawable/icon_lock"/>
+               <item android:id="@+id/navigation_logout"
+               android:title="@string/navigation_logout"
+               android:icon="@drawable/icon_logout"/>
+           </group>
+       </menu>
+   </item>
+
+</menu>
