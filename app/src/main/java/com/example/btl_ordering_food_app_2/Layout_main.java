@@ -12,9 +12,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.btl_ordering_food_app_2.Fragment.Fragment_home_app;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_info_user;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_password;
+import com.example.btl_ordering_food_app_2.Fragment.Fragment_home_app;
 import com.google.android.material.navigation.NavigationView;
 
 public class Layout_main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

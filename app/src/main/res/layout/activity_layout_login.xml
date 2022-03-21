@@ -1,9 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".layout_login">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/night_BackGround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/night_background"/>
+
+    <View
+        android:id="@+id/day_BackGround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/day_background" />
+    <ImageView
+        android:id="@+id/sun"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scrollbarSize="40dp"
+        android:src="@drawable/sun"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-10dp"
+        />
+    <LinearLayout
+        android:id="@+id/view_Sky"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/cloud_1"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/cloud_1" />
+
+        <ImageView
+            android:id="@+id/cloud_2"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:src="@drawable/cloud_2" />
+    </LinearLayout>
+
+    <com.mahfa.dnswitch.DayNightSwitch
+        android:id="@+id/day_night_switch"
+        android:layout_width="76dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:id="@+id/lnl_infor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_Sky"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo_app"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logoapp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/edt_PhoneNumber"
+            android:layout_marginLeft="60dp"
+            android:layout_marginBottom="5dp"
+            android:text="Phone"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_PhoneNumber"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_text_login"
+            android:hint="Phone_Number..."
+            android:padding="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/edt_PhoneNumber"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edt_Password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_text_login"
+            android:hint="********"
+            android:padding="10dp" />
+        <TextView
+            android:id="@+id/txt_forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="forget your password?"
+            android:textSize="17dp"
+            android:layout_gravity="end"
+            android:layout_marginRight="55dp"
+            />
+        <Button
+            android:id="@+id/btn_SignIn"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_login"
+            android:text="Sign_in"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lnl_faceorgg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lnl_infor"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/iconfb"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="or"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="8dp"
+            />
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icongoogle"
+            android:layout_marginLeft="30dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lnl_faceorgg"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/txt_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don'n have an account?"
+            android:textSize="18dp"/>
+        <Button
+            android:id="@+id/btn_createaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_nocolor"
+            android:text="Create"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

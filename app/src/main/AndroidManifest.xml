@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL_orderingfood_app_2">
         <activity
+            android:name=".Layout_signup"
+            android:exported="false" />
+        <activity
+            android:name=".layout_login"
+            android:exported="false" />
+        <activity
             android:name=".Layout_main"
             android:exported="false" />
         <activity

@@ -20,5 +20,11 @@
 
 
     <string name="category_name">Category_name</string>
+    <string name="sex_male">male</string>
+    <string name="sex_female">female</string>
+    <string name="btn_update_confirm">Update</string>
+    <string name="btn_update_cancel">Cancel</string>
+    <string name="txt_make_sure_password">Make sure you remember your password</string>
+    <string name="hint_your_current_password">  Your current password...</string>
 
 </resources>

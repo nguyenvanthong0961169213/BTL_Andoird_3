@@ -3,18 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/button_login.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/day_background.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/edit_text_login.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/edit_text_signup.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/night_background.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/btn_nocolor.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/btn_signup.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/button_login.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/day_background.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/edit_text_signup.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_blur_lock_changepassword.xml" value="0.2203125" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_change_password.xml" value="0.2203125" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_home.xml" value="0.2169230769230769" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_home_app.xml" value="0.2169230769230769" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_lock_changepassword.xml" value="0.2203125" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_logout.xml" value="0.2203125" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_category.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_layout_login.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_layout_main.xml" value="0.25" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_layout_signup.xml" value="0.22" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_cart.xml" value="0.1" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_home_app.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_remarkable.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_info.xml" value="0.20416666666666666" />
-        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_password.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_info_user.xml" value="0.25" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_password.xml" value="0.22" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/layout_header_info_user.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/menu/menu_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/menu/menu_navigation.xml" value="0.20416666666666666" />
