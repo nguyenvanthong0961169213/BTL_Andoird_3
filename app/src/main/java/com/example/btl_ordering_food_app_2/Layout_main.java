@@ -4,13 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_info_user;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_password;
@@ -45,6 +51,8 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
         navigationView.setNavigationItemSelectedListener(this);
 
         replaceFragment(new Fragment_home_app());
+        XinQuyen();
+
         //navigationView.getMenu().findItem(R.id.navigation_home).setChecked(true);
     }
 
@@ -85,6 +93,36 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame,fragment);
         transaction.commit();
+    }
 
+    public boolean Granted_camera=false;
+    final static int CODECamera=1;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode)
+        {
+            case CODECamera:
+                if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED)
+                {
+                    Granted_camera=true;
+                    Toast.makeText(this,"được",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(this,"Bạn chưa cấp quyền SEND_SMS",Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+    }
+    private void XinQuyen()
+    {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,new String[]{
+                    Manifest.permission.CAMERA
+            },CODECamera);
+        }
     }
 }

@@ -6,16 +6,34 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:background="@drawable/day_background"
         android:gravity="center"
         android:orientation="vertical">
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_user_update"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_circleuser"
             android:layout_marginTop="-10dp"
             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:id="@+id/image_camera_update"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_camera"/>
+            <ImageView
+                android:layout_marginLeft="20dp"
+                android:id="@+id/image_photo_update"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_photo"/>
+        </LinearLayout>
         <TextView
             android:id="@+id/txt_name_update"
             android:layout_width="wrap_content"

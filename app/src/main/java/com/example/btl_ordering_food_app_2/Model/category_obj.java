@@ -1,4 +1,4 @@
-package com.example.btl_ordering_food_app_2.Fragment.obj;
+package com.example.btl_ordering_food_app_2.Model;
 
 import java.io.Serializable;
 

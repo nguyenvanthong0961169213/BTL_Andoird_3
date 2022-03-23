@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.example.btl_ordering_food_app_2.Fragment.obj.category_obj;
+import com.example.btl_ordering_food_app_2.Model.category_obj;
 
 import java.util.List;
 
