@@ -23,7 +23,6 @@ public class Fragment_cart extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_cart,container,false);
         Connect_ID(view);
-        txt_username.setText("kaka");
         return view;
     }
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -21,7 +22,10 @@ import android.widget.Toast;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_info_user;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_password;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_home_app;
+import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.Serializable;
 
 public class Layout_main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,10 +37,16 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
     private int CurrentFragment=FRAGMENT_HOME;
 
     private DrawerLayout drawerLayout;
+    final Context context = this;
+    TextView txt_Name_drawer,txt_UserName,txt_address,txt_phone_number,txt_sex;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_main);
+
+
 
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,13 +57,29 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView=findViewById(R.id.navigation_view);
+        update_data_navigation_drawer(navigationView);
         navigationView.setNavigationItemSelectedListener(this);
 
         replaceFragment(new Fragment_home_app());
         XinQuyen();
-
-        //navigationView.getMenu().findItem(R.id.navigation_home).setChecked(true);
+    }
+    void update_data_navigation_drawer(NavigationView navigationView)
+    {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        user_obj user = (user_obj) bundle.get("user_obj_data");
+        txt_Name_drawer=navigationView.getHeaderView(0).findViewById(R.id.txt_Name_drawer);
+        txt_UserName=navigationView.getHeaderView(0).findViewById(R.id.txt_UserName_drawer);
+        txt_phone_number=navigationView.getHeaderView(0).findViewById(R.id.txt_phone_number_drawer);
+        txt_address=navigationView.getHeaderView(0).findViewById(R.id.txt_address_drawer);
+        txt_sex=navigationView.getHeaderView(0).findViewById(R.id.txt_sex);
+        txt_Name_drawer.setText(user.getName());
+        txt_UserName.setText(user.getPhonenumber());
+        txt_phone_number.setText(user.getPhonenumber());
+        txt_address.setText(user.getAddress());
+        txt_sex.setText(user.isSex()?"Nam":"Nữ");
     }
 
     @Override
@@ -65,8 +91,18 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
 //            CurrentFragment=FRAGMENT_REMARKABLE;
         }else if(id==R.id.navigation_update_info_user)
         {
-            replaceFragment(new Fragment_update_info_user());
-//            CurrentFragment=FRAGMENT_REMARKABLE;
+
+            Intent intent_data = getIntent();
+            Bundle bundle_data = intent_data.getExtras();
+            user_obj user = (user_obj) bundle_data.get("user_obj_data");
+
+            Fragment_update_info_user fragment_update_info_user = new Fragment_update_info_user();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("user_obj_data_update",(Serializable) user);;
+            fragment_update_info_user.setArguments(bundle);//Here pass your data
+
+
+            replaceFragment(fragment_update_info_user);
         }else if(id==R.id.navigation_update_password)
         {
             replaceFragment(new Fragment_update_password());
@@ -110,7 +146,7 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
                 }
                 else
                 {
-                    Toast.makeText(this,"Bạn chưa cấp quyền SEND_SMS",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"Bạn chưa cấp quyền cho cammera",Toast.LENGTH_LONG).show();
                 }
                 break;
         }

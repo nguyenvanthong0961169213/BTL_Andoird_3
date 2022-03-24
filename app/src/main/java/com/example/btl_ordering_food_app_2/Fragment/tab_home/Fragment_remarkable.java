@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment;
 import com.example.btl_ordering_food_app_2.R;
 
 public class Fragment_remarkable extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_remarkable,container,false);
     }
+
 }

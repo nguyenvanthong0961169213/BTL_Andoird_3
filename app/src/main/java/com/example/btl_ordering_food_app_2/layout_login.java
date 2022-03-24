@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_home;
+
 import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,7 +37,7 @@ public class layout_login extends AppCompatActivity {
     DayNightSwitch dayNightSwitch;
     Button btn_Createaccount,btn_Signin;
     EditText edt_phonenumber, edt_password;
-    List<user_obj> data_user=new ArrayList<>();
+    List<user_obj> arrUser=new ArrayList<>();
 
     void Connect_ID() {
         sun = findViewById(R.id.sun);
@@ -83,20 +84,17 @@ public class layout_login extends AppCompatActivity {
     }
     void check_login()
     {
-        for (user_obj user:data_user)
+        for (user_obj user:arrUser)
         {
             if (edt_phonenumber.getText().toString().trim().equals(user.getPhonenumber())
                     && edt_password.getText().toString().trim().equals(user.getUserpassword())) {
                 Intent intent=new Intent(context,Layout_main.class);
-                //Tạo intent trở về MainActivity
-                //Tạo Bundle để chứa dữ liệu
+
                 Bundle bundle=new Bundle();
-//                                 // Device device = new Device(Integer.parseInt(edt_ID.getText().toString()),uri, edt_DeviceName.getText().toString(),edt_DeviceWattage.getText().toString(),swtStatusAdd.isChecked());
-                bundle.putSerializable("user_obj", (Serializable) user);;
+                bundle.putSerializable("user_obj_data",(Serializable) user);;
 //                                //Đăt bunler lên intent
-//                                intent.putExtras(bundle);
+                intent.putExtras(bundle);
                 startActivity(intent);
-                break;
             }
             else
             {
@@ -113,13 +111,11 @@ public class layout_login extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap : snapshot.getChildren()) {
-                    data_user.add(snap.getValue(user_obj.class));
+                    arrUser.add(snap.getValue(user_obj.class));
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

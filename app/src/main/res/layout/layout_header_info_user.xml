@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    tools:context=".Layout_header_info_user"
     android:orientation="vertical">
 
     <LinearLayout
@@ -30,7 +31,7 @@
                 android:textStyle="bold"
                 />
             <TextView
-                android:id="@+id/txt_UserName"
+                android:id="@+id/txt_UserName_drawer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/user_name"
@@ -40,54 +41,68 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="120dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/txt_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/address"
-            android:textSize="16dp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:id="@+id/txt_phone_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/phone_number"
-            android:textSize="16dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="40dp"
-            />
-        <TextView
-            android:id="@+id/txt_sex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sex"
-            android:textSize="16dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="40dp"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/txt_address_drawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center">
-            <Button
-                android:id="@+id/btn_update_info_user"
+            android:layout_marginTop="15dp">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/update_info_user"
+                android:text="Phone:"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
                 />
-            <Button
-                android:id="@+id/btn_logout"
+            <TextView
+                android:id="@+id/txt_phone_number_drawer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/logout"
-                android:layout_marginLeft="30dp"
+                android:text="@string/phone_number"
+                android:textSize="17dp"
+                android:layout_marginLeft="24dp"
                 />
         </LinearLayout>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sex"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/txt_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sex"
+                android:textSize="17dp"
+                android:layout_marginLeft="43dp"
+                />
+        </LinearLayout>
 
+        </LinearLayout>
 </LinearLayout>

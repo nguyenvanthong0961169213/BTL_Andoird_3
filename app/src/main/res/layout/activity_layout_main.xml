@@ -6,8 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Layout_main"
     tools:openDrawer="start"
-    android:id="@+id/drawer_layout">
-
+    android:id="@+id/drawer_layout"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

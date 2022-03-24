@@ -2,9 +2,9 @@
     <string name="app_name">BTL_ordering-food_app_2</string>
     <string name="name">Name</string>
     <string name="user_name">User_Name</string>
-    <string name="address">Address</string>
-    <string name="phone_number">Phone_Number</string>
-    <string name="sex">Sex</string>
+    <string name="address">Address:</string>
+    <string name="phone_number">Phone:</string>
+    <string name="sex">Sex:</string>
     <string name="update_info_user">Update</string>
     <string name="logout">Logout</string>
 

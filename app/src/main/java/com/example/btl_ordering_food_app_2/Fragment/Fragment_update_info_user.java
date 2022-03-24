@@ -2,42 +2,34 @@ package com.example.btl_ordering_food_app_2.Fragment;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.textclassifier.ConversationAction;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import com.example.btl_ordering_food_app_2.Model.user_obj;
 
-import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_home;
 import com.example.btl_ordering_food_app_2.Layout_main;
-import com.example.btl_ordering_food_app_2.MainActivity;
+import com.example.btl_ordering_food_app_2.Layout_signup;
+import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.example.btl_ordering_food_app_2.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import javax.xml.transform.Result;
+import java.io.Serializable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
 public class Fragment_update_info_user extends Fragment {
 
     Button btn_Cancel;
@@ -45,7 +37,10 @@ public class Fragment_update_info_user extends Fragment {
     ImageView imagephoto;
     ImageView imagecamera;
     String uri =null;
-    TextView txt_name;
+    TextView txt_name,txt_phone_number_update;
+    EditText edt_Name_update,edt_PhoneNumber_update,edt_address_update;
+    RadioButton rdo_male,rdo_female;
+
     void Connect_ID(View view)
     {
         btn_Cancel=view.findViewById(R.id.btn_update_cancle);
@@ -53,20 +48,47 @@ public class Fragment_update_info_user extends Fragment {
         imagephoto=view.findViewById(R.id.image_photo_update);
         imagecamera=view.findViewById(R.id.image_camera_update);
         txt_name=view.findViewById(R.id.txt_name_update);
+        txt_phone_number_update=view.findViewById(R.id.txt_phone_number_update);
+        edt_Name_update=view.findViewById(R.id.edt_Name_update);
+        edt_PhoneNumber_update=view.findViewById(R.id.edt_PhoneNumber_update);
+        edt_address_update=view.findViewById(R.id.edt_address_update);
+        rdo_male=view.findViewById(R.id.rdo_male);
+        rdo_female=view.findViewById(R.id.rdo_female);
+    }
+    void update_data_user()
+    {
+        user_obj user = (user_obj) this.getArguments().getSerializable("user_obj_data_update");
+          txt_name.setText(user.getName());
+          txt_phone_number_update.setText(user.getPhonenumber());
+          edt_Name_update.setText(user.getName());
+          edt_PhoneNumber_update.setText(user.getPhonenumber());
+          edt_address_update.setText(user.getAddress());
+       //   if(user.isSex()?);
+        if (user.isSex()) {
+            rdo_male.setChecked(true);
+        } else {
+            rdo_female.setChecked(true);
+        }
 
+//
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_update_info_user,container,false);
         Connect_ID(view);
-        Load_data();
-        Intent intent_cancel = new Intent(getActivity(),Layout_main.class);
+        //Load_data();
+        update_data_user();
+        Intent intent_cancel = new Intent(getContext(),Layout_main.class);
+        user_obj user_2 = (user_obj) this.getArguments().getSerializable("user_obj_data_update");
         btn_Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Context viewContext=(Context) view.getContext();
-                //Intent intent_cancel = new Intent(viewContext,Fragment_home_app.class);
+                Bundle bundle=new Bundle();
+
+                bundle.putSerializable("user_obj_data",(Serializable) user_2);;
+//                                //Đăt bunler lên intent
+                intent_cancel.putExtras(bundle);
                 startActivity(intent_cancel);
             }
         });
@@ -109,25 +131,25 @@ public class Fragment_update_info_user extends Fragment {
         }
 
     }
-    void Load_data()
-    {
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference=firebaseDatabase.getReference();
-
-        databaseReference.child("User/0").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-               user_obj data_user_obj=new user_obj();
-               data_user_obj= snapshot.getValue(user_obj.class);
-               txt_name.setText(data_user_obj.getName());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
+//    void Load_data()
+//    {
+//        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+//        DatabaseReference databaseReference=firebaseDatabase.getReference();
+//
+//        databaseReference.child("User/0").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//               user_obj data_user_obj=new user_obj();
+//               data_user_obj= snapshot.getValue(user_obj.class);
+//               txt_name.setText(data_user_obj.getName());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }
 
 

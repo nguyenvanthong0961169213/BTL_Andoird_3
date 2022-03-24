@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "405960534604",
-    "firebase_url": "https://btl-ordering-food-app-default-rtdb.firebaseio.com",
-    "project_id": "btl-ordering-food-app",
-    "storage_bucket": "btl-ordering-food-app.appspot.com"
+    "project_number": "1084659371024",
+    "project_id": "btl-android-2",
+    "storage_bucket": "btl-android-2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:405960534604:android:648cb3b7e3b7cd0b2562e9",
+        "mobilesdk_app_id": "1:1084659371024:android:3f6567aa2476674b248e95",
         "android_client_info": {
           "package_name": "com.example.btl_ordering_food_app_2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "405960534604-psjscp41iifqfiq6s817t39d35kg9564.apps.googleusercontent.com",
+          "client_id": "1084659371024-6a99evll37mghjuq068d786qki0i6q07.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA4BkEaQKnu8HpracfBMQ0dD3RkQ1dw35w"
+          "current_key": "AIzaSyDjRTyD5E9MhJwF100Ijx72uR5gqOdx19w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "405960534604-psjscp41iifqfiq6s817t39d35kg9564.apps.googleusercontent.com",
+              "client_id": "1084659371024-6a99evll37mghjuq068d786qki0i6q07.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

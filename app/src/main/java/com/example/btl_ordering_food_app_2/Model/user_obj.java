@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class user_obj implements Serializable {
     //Attributes
-    private int id;
     private String name;
     private String phonenumber;
     private String address;
@@ -13,8 +12,7 @@ public class user_obj implements Serializable {
     //Constructor
     public  user_obj(){};
 
-    public user_obj(int id,String name, String phonenumber, String address, boolean sex, String username, String userpassword) {
-        this.id=id;
+    public user_obj(String name, String phonenumber, String address, boolean sex, String userpassword) {
         this.name = name;
         this.phonenumber = phonenumber;
         this.address = address;
@@ -23,13 +21,6 @@ public class user_obj implements Serializable {
     }
 
     //Getters and Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
