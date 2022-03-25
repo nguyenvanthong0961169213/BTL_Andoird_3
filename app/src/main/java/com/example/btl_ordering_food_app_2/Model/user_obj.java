@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class user_obj implements Serializable {
     //Attributes
+    private String id;
     private String name;
     private String phonenumber;
     private String address;
@@ -12,7 +13,8 @@ public class user_obj implements Serializable {
     //Constructor
     public  user_obj(){};
 
-    public user_obj(String name, String phonenumber, String address, boolean sex, String userpassword) {
+    public user_obj(String id, String name, String phonenumber, String address, boolean sex, String userpassword) {
+        this.id=id;
         this.name = name;
         this.phonenumber = phonenumber;
         this.address = address;
@@ -21,7 +23,12 @@ public class user_obj implements Serializable {
     }
 
     //Getters and Setters
-
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -60,5 +67,17 @@ public class user_obj implements Serializable {
 
     public void setUserpassword(String userpassword) {
         this.userpassword = userpassword;
+    }
+
+    @Override
+    public String toString() {
+        return "user_obj{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", address='" + address + '\'' +
+                ", sex=" + sex +
+                ", userpassword='" + userpassword + '\'' +
+                '}';
     }
 }

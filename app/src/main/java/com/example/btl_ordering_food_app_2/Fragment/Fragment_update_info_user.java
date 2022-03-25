@@ -26,13 +26,18 @@ import com.example.btl_ordering_food_app_2.Layout_main;
 import com.example.btl_ordering_food_app_2.Layout_signup;
 import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.example.btl_ordering_food_app_2.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 public class Fragment_update_info_user extends Fragment {
 
-    Button btn_Cancel;
+    Button btn_Cancel,btn_update_confirm;
     CircleImageView circleImageView;
     ImageView imagephoto;
     ImageView imagecamera;
@@ -54,6 +59,7 @@ public class Fragment_update_info_user extends Fragment {
         edt_address_update=view.findViewById(R.id.edt_address_update);
         rdo_male=view.findViewById(R.id.rdo_male);
         rdo_female=view.findViewById(R.id.rdo_female);
+        btn_update_confirm=view.findViewById(R.id.btn_update_confirm);
     }
     void update_data_user()
     {
@@ -63,14 +69,11 @@ public class Fragment_update_info_user extends Fragment {
           edt_Name_update.setText(user.getName());
           edt_PhoneNumber_update.setText(user.getPhonenumber());
           edt_address_update.setText(user.getAddress());
-       //   if(user.isSex()?);
-        if (user.isSex()) {
-            rdo_male.setChecked(true);
-        } else {
-            rdo_female.setChecked(true);
-        }
-
-//
+          if (user.isSex()) {
+                rdo_male.setChecked(true);
+          }else {
+                rdo_female.setChecked(true);
+          }
     }
     @Nullable
     @Override
@@ -80,16 +83,58 @@ public class Fragment_update_info_user extends Fragment {
         //Load_data();
         update_data_user();
         Intent intent_cancel = new Intent(getContext(),Layout_main.class);
-        user_obj user_2 = (user_obj) this.getArguments().getSerializable("user_obj_data_update");
+        user_obj info_user = (user_obj) this.getArguments().getSerializable("user_obj_data_update");
         btn_Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle=new Bundle();
 
-                bundle.putSerializable("user_obj_data",(Serializable) user_2);;
-//                                //Đăt bunler lên intent
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("user_obj_data",(Serializable) info_user);;
+                //Đăt bunler lên intent
                 intent_cancel.putExtras(bundle);
                 startActivity(intent_cancel);
+            }
+        });
+        btn_update_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //update dữ liệu
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference();
+                databaseReference.child("User").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot snap : snapshot.getChildren()) {
+                            user_obj user=(snap.getValue(user_obj.class));
+                            if(user.getId().equals(info_user.getId()))
+                            {
+                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                DatabaseReference databaseReference_update = firebaseDatabase.getReference();
+                                user_obj user_update=new user_obj(info_user.getId(),edt_Name_update.getText().toString().trim(),
+                                        edt_PhoneNumber_update.getText().toString().trim(),edt_address_update.getText().toString().trim(),
+                                        (rdo_male.isChecked())?true:false,info_user.getUserpassword());
+
+                                databaseReference_update.child("User").child(snap.getKey()).setValue(user_update, new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                        Toast.makeText(getContext(),"Bạn đã cập nhật thành công",Toast.LENGTH_LONG).show();
+                                        Bundle bundle=new Bundle();
+                                        bundle.putSerializable("user_obj_data",(Serializable) user_update);
+                                        //Đăt bunler lên intent
+                                        intent_cancel.putExtras(bundle);
+                                        startActivity(intent_cancel);
+                                    }
+                                });
+                                break;
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+
             }
         });
         imagecamera.setOnClickListener(new View.OnClickListener() {
@@ -121,15 +166,12 @@ public class Fragment_update_info_user extends Fragment {
             Bitmap bitmap=(Bitmap) data.getExtras().get("data");
             circleImageView.setImageBitmap(bitmap);
         }
-//
         if(requestCode==124 && resultCode== RESULT_OK && data!=null)
         {
             assert data!=null;
             uri=data.getData().toString();
             circleImageView.setImageURI(data.getData());
-
         }
-
     }
 //    void Load_data()
 //    {
