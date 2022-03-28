@@ -4,54 +4,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_home;
+import com.example.btl_ordering_food_app_2.Model.Food;
 import com.example.btl_ordering_food_app_2.R;
-import com.example.btl_ordering_food_app_2.Model.category_obj;
-
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class category_adapter extends RecyclerView.Adapter<category_adapter.UserViewHolder> {
-
-
-    //Attributes
-    //1.Khai báo các phần tử nằm trong lớp category_adapter
-    //1.Lớp ngữ cảnh contaxt là lớp cha của lớp activity
-    //private Activity activity;
-    //2.Nguồn dữ liệu cho Adapter
-    private List<category_obj> data;
+public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHolder> {
+    private List<Food> data;
     private Fragment mContext;
 
-
-    public  category_adapter(Fragment_home mContext){
+    public  food_adapter(Fragment mContext){
         this.mContext = mContext;
     }
-    public  void setData(List<category_obj> list){
+    public  void setData(List<Food> list){
         this.data = list;
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_category,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.avtivity_food,parent,false);
         return new UserViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        category_obj user = data.get(position);
+        Food user = data.get(position);
         if(user == null)
         {
             return;
         }
-        holder.civCategory.setImageResource(user.getImage());
-        holder.txtName.setText(user.getName());
+
+        holder.civImgFood.setImageResource(user.getAnh());
+        holder.txtNameFood.setText(user.getTenSP());
+        holder.txtGiaTienFood.setText(String.valueOf(user.getGiaTien()));
     }
 
     @Override
@@ -62,16 +51,15 @@ public class category_adapter extends RecyclerView.Adapter<category_adapter.User
         return 0;
     }
 
-
-    //3.
     public class UserViewHolder extends RecyclerView.ViewHolder{
-        private CircleImageView civCategory;
-        private TextView txtName;
+        private CircleImageView civImgFood;
+        private TextView txtNameFood,txtGiaTienFood;
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-            civCategory = itemView.findViewById(R.id.civ_Img);
-            txtName =  itemView.findViewById(R.id.civ_Name);
-
+            civImgFood = itemView.findViewById(R.id.civ_ImgFood);
+            txtNameFood =  itemView.findViewById(R.id.txtNameFood);
+            txtGiaTienFood = itemView.findViewById(R.id.txtGiaBanFood);
         }
     }
 }
+

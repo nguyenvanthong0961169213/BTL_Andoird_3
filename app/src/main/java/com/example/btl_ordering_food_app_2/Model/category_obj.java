@@ -6,10 +6,10 @@ public class category_obj implements Serializable {
     //Attributes
     private int ID;
     private String Name;
-    private String Image;
+    private int Image;
     //Contructor
 
-    public category_obj(int ID, String name, String image) {
+    public category_obj(int ID, String name, int image) {
         this.ID = ID;
         Name = name;
         Image = image;
@@ -32,11 +32,11 @@ public class category_obj implements Serializable {
         Name = name;
     }
 
-    public String getImage() {
+    public int getImage() {
         return Image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         Image = image;
     }
 }

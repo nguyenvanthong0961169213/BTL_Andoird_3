@@ -100,6 +100,7 @@ public class layout_login extends AppCompatActivity {
             {
                 Toast.makeText(context,user.getUserpassword(),Toast.LENGTH_LONG).show();
             }
+          //  break;
         }
     }
     void Load_data_login()
