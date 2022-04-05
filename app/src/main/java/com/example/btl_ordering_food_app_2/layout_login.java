@@ -84,27 +84,30 @@ public class layout_login extends AppCompatActivity {
     }
     void check_login()
     {
+
         for (user_obj user:arrUser)
         {
+
             if (edt_phonenumber.getText().toString().trim().equals(user.getPhonenumber())
                     && edt_password.getText().toString().trim().equals(user.getUserpassword())) {
                 Intent intent=new Intent(context,Layout_main.class);
 
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("user_obj_data",(Serializable) user);;
-//                                //Đăt bunler lên intent
+                //Đăt bunler lên intent
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
             else
             {
-                Toast.makeText(context,user.getUserpassword(),Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"kaka",Toast.LENGTH_LONG).show();
             }
-          //  break;
+            break;
         }
     }
     void Load_data_login()
     {
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
 
@@ -119,6 +122,5 @@ public class layout_login extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
     }
 }

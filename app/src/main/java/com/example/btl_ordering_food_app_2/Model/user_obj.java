@@ -1,5 +1,7 @@
 package com.example.btl_ordering_food_app_2.Model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class user_obj implements Serializable {
@@ -10,16 +12,19 @@ public class user_obj implements Serializable {
     private String address;
     private boolean sex;
     private String userpassword;
+
+    private String avatar;
     //Constructor
     public  user_obj(){};
 
-    public user_obj(String id, String name, String phonenumber, String address, boolean sex, String userpassword) {
+    public user_obj(String id, String name, String phonenumber, String address, boolean sex, String userpassword,String avatar) {
         this.id=id;
         this.name = name;
         this.phonenumber = phonenumber;
         this.address = address;
         this.sex = sex;
         this.userpassword = userpassword;
+        this.avatar=avatar;
     }
 
     //Getters and Setters
@@ -69,6 +74,14 @@ public class user_obj implements Serializable {
         this.userpassword = userpassword;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "user_obj{" +
@@ -80,4 +93,5 @@ public class user_obj implements Serializable {
                 ", userpassword='" + userpassword + '\'' +
                 '}';
     }
+
 }

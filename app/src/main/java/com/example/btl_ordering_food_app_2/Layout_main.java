@@ -14,6 +14,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -24,8 +25,12 @@ import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_password;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_home_app;
 import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.net.URL;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Layout_main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,6 +44,7 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
     private DrawerLayout drawerLayout;
     final Context context = this;
     TextView txt_Name_drawer,txt_UserName,txt_address,txt_phone_number,txt_sex;
+    CircleImageView image_user_drawer;
 
 
     @Override
@@ -70,16 +76,21 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         user_obj user = (user_obj) bundle.get("user_obj_data");
+
+        image_user_drawer=navigationView.getHeaderView(0).findViewById(R.id.image_user_drawer);
         txt_Name_drawer=navigationView.getHeaderView(0).findViewById(R.id.txt_Name_drawer);
         txt_UserName=navigationView.getHeaderView(0).findViewById(R.id.txt_UserName_drawer);
         txt_phone_number=navigationView.getHeaderView(0).findViewById(R.id.txt_phone_number_drawer);
         txt_address=navigationView.getHeaderView(0).findViewById(R.id.txt_address_drawer);
         txt_sex=navigationView.getHeaderView(0).findViewById(R.id.txt_sex);
+        //simpleImageSwitcher.setImageURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.image1));
+        Picasso.get().load(user.getAvatar()).into(image_user_drawer);
         txt_Name_drawer.setText(user.getName());
         txt_UserName.setText(user.getPhonenumber());
         txt_phone_number.setText(user.getPhonenumber());
         txt_address.setText(user.getAddress());
         txt_sex.setText(user.isSex()?"Nam":"Nữ");
+
     }
 
     @Override

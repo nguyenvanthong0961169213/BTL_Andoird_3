@@ -42,10 +42,10 @@ public class Fragment_home extends Fragment {
       //   rcvCategory.setLayoutManager(new LinearLayoutManager(getContext()));
         lstContent= new ArrayList<>();
         lstContent1 = new ArrayList<>();
-        lstContent.add(new category_obj(1,"Đồ ăn",R.drawable.icon_home));
-        lstContent.add(new category_obj(2,"Đồ uống",R.drawable.icon_home));
-        lstContent.add(new category_obj(3,"Kem",R.drawable.icon_home));
-        lstContent.add(new category_obj(4,"Đồ chiên",R.drawable.icon_home));
+        lstContent.add(new category_obj(1,"Đồ Ăn",R.drawable.icon_home));
+        lstContent.add(new category_obj(2,"Đồ Uống",R.drawable.icon_home));
+        lstContent.add(new category_obj(3,"Ăn Vặt",R.drawable.icon_home));
+        lstContent.add(new category_obj(4,"Ăn Nhanh",R.drawable.icon_home));
 
         category_adapter.setData(lstContent);
         rcvCategory.setAdapter(category_adapter);

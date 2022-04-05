@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.example.btl_ordering_food_app_2.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,6 +60,8 @@ public class Fragment_update_info_user extends Fragment {
     TextView txt_name,txt_phone_number_update;
     EditText edt_Name_update,edt_PhoneNumber_update,edt_address_update;
     RadioButton rdo_male,rdo_female;
+    public String avatar_user;
+
     void Connect_ID(View view)
     {
         btn_Cancel=view.findViewById(R.id.btn_update_cancle);
@@ -127,12 +131,11 @@ public class Fragment_update_info_user extends Fragment {
                                 DatabaseReference databaseReference_update = firebaseDatabase.getReference();
                                 user_obj user_update=new user_obj(info_user.getId(),edt_Name_update.getText().toString().trim(),
                                         edt_PhoneNumber_update.getText().toString().trim(),edt_address_update.getText().toString().trim(),
-                                        (rdo_male.isChecked())?true:false,info_user.getUserpassword());
-                                upload_image(view);
+                                        (rdo_male.isChecked())?true:false,info_user.getUserpassword(),""+avatar_user);
                                 databaseReference_update.child("User").child(snap.getKey()).setValue(user_update, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                        Toast.makeText(getContext(),"Bạn đã cập nhật thành công",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getContext(),"Cập nhật thành công",Toast.LENGTH_LONG).show();
                                         Bundle bundle=new Bundle();
                                         bundle.putSerializable("user_obj_data",(Serializable) user_update);
                                         //Đăt bunler lên intent
@@ -169,6 +172,8 @@ public class Fragment_update_info_user extends Fragment {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent,"chọn ảnh"),124);
+                upload_image(view);
+
             }
         });
         return view;
@@ -204,6 +209,14 @@ public class Fragment_update_info_user extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> avatar = taskSnapshot.getStorage().getDownloadUrl();
+                        //avatar_user=avatar.getResult().toString();
+
+                        while (!avatar.isCanceled()){
+                            Uri dowload = avatar.getResult();
+                            //avatar_user=dowload.toString();
+
+                        }
                         pd.dismiss();
                         Snackbar.make(view.findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG).show();
                     }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e4e6eb">
+    android:background="#FFFFFF">
+    <!--#e4e6eb-->
     <!--    tools:context=".Remarkable_Fragment"-->
 
 
@@ -18,7 +19,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvCategory"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="110dp"
             android:layout_margin="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -30,7 +31,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvTypeFood"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="550dp"
             android:layout_margin="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

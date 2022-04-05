@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/btncongtru.xml" value="0.178125" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/btnorder.xml" value="0.2203125" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/button_login.xml" value="0.20833333333333334" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/day_background.xml" value="0.20833333333333334" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/edit_text_login.xml" value="0.20833333333333334" />
