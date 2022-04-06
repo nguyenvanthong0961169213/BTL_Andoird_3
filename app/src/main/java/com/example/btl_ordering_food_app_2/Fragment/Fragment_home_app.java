@@ -1,6 +1,7 @@
 package com.example.btl_ordering_food_app_2.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,8 +15,17 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.btl_ordering_food_app_2.Fragment.tab_home.ViewPagerAdapter;
+import com.example.btl_ordering_food_app_2.Model.Food;
 import com.example.btl_ordering_food_app_2.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Fragment_home_app extends Fragment {
 
@@ -83,5 +93,23 @@ public class Fragment_home_app extends Fragment {
 
             }
         });
+    }
+    List<Food> update_data_doan()
+    {
+        List<Food> data=new ArrayList<>();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
+        databaseReference.child("Food/DoAn").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    data.add(snap.getValue(Food.class));
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return data;
     }
 }

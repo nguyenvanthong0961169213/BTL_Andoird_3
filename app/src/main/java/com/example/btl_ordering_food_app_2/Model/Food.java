@@ -4,12 +4,12 @@ public class Food {
     //Attributes
     private int MaSP;
     private int GiaTien;
-    private int Anh;
+    private String Anh;
     private String TenSP;
 
     //Contructors
     public Food(){}
-    public Food(int maSP, int giaTien, int anh, String tenSP) {
+    public Food(int maSP, int giaTien, String anh, String tenSP) {
         MaSP = maSP;
         GiaTien = giaTien;
         Anh = anh;
@@ -33,11 +33,11 @@ public class Food {
         GiaTien = giaTien;
     }
 
-    public int getAnh() {
+    public String getAnh() {
         return Anh;
     }
 
-    public void setAnh(int anh) {
+    public void setAnh(String anh) {
         Anh = anh;
     }
 

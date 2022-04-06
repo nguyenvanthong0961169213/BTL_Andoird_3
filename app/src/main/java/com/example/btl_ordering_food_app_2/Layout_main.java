@@ -68,6 +68,7 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
         update_data_navigation_drawer(navigationView);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         replaceFragment(new Fragment_home_app());
         XinQuyen();
     }
@@ -99,7 +100,7 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
         if(id==R.id.navigation_home_app)
         {
             replaceFragment(new Fragment_home_app());
-//            CurrentFragment=FRAGMENT_REMARKABLE;
+              //CurrentFragment=FRAGMENT_HOME;
         }else if(id==R.id.navigation_update_info_user)
         {
 
