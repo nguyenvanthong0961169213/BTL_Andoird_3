@@ -86,6 +86,7 @@
             android:layout_gravity="center"
             android:background="@drawable/edit_text_login"
             android:hint="Phone_Number..."
+            android:inputType="phone"
             android:padding="10dp" />
 
         <TextView

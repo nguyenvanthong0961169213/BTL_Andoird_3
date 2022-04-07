@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl_ordering_food_app_2.Model.Order;
 import com.example.btl_ordering_food_app_2.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -43,7 +44,8 @@ public class order_adapter extends RecyclerView.Adapter<order_adapter.UserViewHo
             return;
         }
 
-        holder.civImgOrder.setImageResource(user.getAnh());
+       // holder.civImgOrder.setImageResource(user.getAnh());
+        Picasso.get().load(user.getAnh()).into(holder.civImgOrder);
         holder.txtName.setText(user.getTenSP());
         holder.txtSoLuong.setText(String.valueOf(user.getSoLuong()));
         holder.txtGiaTienOrder.setText(String.valueOf(user.getGiaTien()));

@@ -1,6 +1,8 @@
 package com.example.btl_ordering_food_app_2.Model;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
     //Attributes
     private int MaSP;
     private int GiaTien;

@@ -35,6 +35,18 @@ public class Fragment_home extends Fragment {
 
     List<category_obj> lstContent ;
     List<Food> lstContent1;
+    //Khởi tạo đối tượng ịnterface
+    public ISendDataListener Isenddata;
+
+    public interface ISendDataListener{
+        void SendData(Food food);
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Isenddata = (ISendDataListener) getActivity();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,31 +72,12 @@ public class Fragment_home extends Fragment {
         category_adapter.setData(lstContent);
         rcvCategory.setAdapter(category_adapter);
 
+        lstContent1=new ArrayList<>();
+       // food_adapter.setData(lstContent1,getActivity());
         food_adapter.setData(lstContent1);
         rcvTypeFood.setAdapter(food_adapter);
+        update_data_doan();
         return view;
-
-    }
-
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        lstContent1=new ArrayList<>();
-        update_data_doan();
-    }
-
-    @Override
-    public void onAttachFragment(@NonNull Fragment childFragment) {
-        super.onAttachFragment(childFragment);
-        lstContent1=new ArrayList<>();
-        update_data_doan();
-    }
-
-    public Fragment_home() {
-        super();
-        lstContent1=new ArrayList<>();
-        update_data_doan();
     }
 
     public static final String TAG= MainActivity.class.getSimpleName();
@@ -98,7 +91,7 @@ public class Fragment_home extends Fragment {
                 for (DataSnapshot snap : snapshot.getChildren()) {
                    lstContent1.add(snap.getValue(Food.class));
                 }
-                Log.e(TAG,"size_2"+lstContent1.get(0).getTenSP());
+                food_adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

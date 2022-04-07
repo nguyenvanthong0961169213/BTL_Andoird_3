@@ -23,6 +23,9 @@ import android.widget.Toast;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_info_user;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_password;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_home_app;
+import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_cart;
+import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_home;
+import com.example.btl_ordering_food_app_2.Model.Food;
 import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -32,7 +35,8 @@ import java.net.URL;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Layout_main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Layout_main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+, Fragment_home.ISendDataListener {
 
     private static final int FRAGMENT_HOME=0;
     private static final int FRAGMENT_UPDATE_INFO_USER=1;
@@ -172,5 +176,11 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
                     Manifest.permission.CAMERA
             },CODECamera);
         }
+    }
+
+    @Override
+    public void SendData(Food food) {
+        Fragment_cart fragment_cart = (Fragment_cart) getSupportFragmentManager().findFragmentById(R.id.navigation_cart);
+        Fragment_cart.receiveDataFromFramentHome(food);
     }
 }

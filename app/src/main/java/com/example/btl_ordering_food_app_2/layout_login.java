@@ -71,7 +71,8 @@ public class layout_login extends AppCompatActivity {
         btn_Createaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //      startActivity(intent_signup);
+//                Intent intent =new Intent(context,Layout_signup.class);
+//                startActivity(intent);
             }
         });
         btn_Signin.setOnClickListener(new View.OnClickListener() {
@@ -84,14 +85,11 @@ public class layout_login extends AppCompatActivity {
     }
     void check_login()
     {
-
         for (user_obj user:arrUser)
         {
-
             if (edt_phonenumber.getText().toString().trim().equals(user.getPhonenumber())
                     && edt_password.getText().toString().trim().equals(user.getUserpassword())) {
                 Intent intent=new Intent(context,Layout_main.class);
-
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("user_obj_data",(Serializable) user);;
                 //Đăt bunler lên intent
@@ -107,10 +105,8 @@ public class layout_login extends AppCompatActivity {
     }
     void Load_data_login()
     {
-
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
-
         databaseReference.child("User").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -6,10 +6,10 @@ public class Order  implements Serializable {
     private int MaSP;
     private int SoLuong;
     private int GiaTien;
-    private int Anh;
+    private String Anh;
     private String TenSP;
 
-    public Order(int maSP, int soLuong, int giaTien, int anh, String tenSP) {
+    public Order(int maSP, int soLuong, int giaTien, String anh, String tenSP) {
         MaSP = maSP;
         SoLuong = soLuong;
         GiaTien = giaTien;
@@ -41,11 +41,11 @@ public class Order  implements Serializable {
         GiaTien = giaTien;
     }
 
-    public int getAnh() {
+    public String getAnh() {
         return Anh;
     }
 
-    public void setAnh(int anh) {
+    public void setAnh(String anh) {
         Anh = anh;
     }
 

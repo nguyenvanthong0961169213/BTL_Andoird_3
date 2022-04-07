@@ -215,7 +215,6 @@ public class Fragment_update_info_user extends Fragment {
                         while (!avatar.isCanceled()){
                             Uri dowload = avatar.getResult();
                             //avatar_user=dowload.toString();
-
                         }
                         pd.dismiss();
                         Snackbar.make(view.findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG).show();
