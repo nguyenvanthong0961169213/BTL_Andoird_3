@@ -10,6 +10,7 @@
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/edit_text_login.xml" value="0.20833333333333334" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/edit_text_signup.xml" value="0.20833333333333334" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable-v24/night_background.xml" value="0.20833333333333334" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/backgound_category_selected.xml" value="0.2203125" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/btn_nocolor.xml" value="0.20833333333333334" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/btn_signup.xml" value="0.20833333333333334" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/button_login.xml" value="0.20833333333333334" />
@@ -23,6 +24,7 @@
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_logout.xml" value="0.2203125" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/drawable/icon_update_info.xml" value="0.20462962962962963" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_category.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_food_description.xml" value="0.13541666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_layout_hearder_info_user.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_layout_login.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_layout_main.xml" value="0.25" />

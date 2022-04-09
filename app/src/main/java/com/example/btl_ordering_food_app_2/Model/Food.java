@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class Food implements Serializable {
     //Attributes
-    private int MaSP;
+    private String MaSP;
     private int GiaTien;
     private String Anh;
     private String TenSP;
 
     //Contructors
     public Food(){}
-    public Food(int maSP, int giaTien, String anh, String tenSP) {
+    public Food(String maSP, int giaTien, String anh, String tenSP) {
         MaSP = maSP;
         GiaTien = giaTien;
         Anh = anh;
@@ -19,11 +19,11 @@ public class Food implements Serializable {
     }
 
     //Getters and Setter
-    public int getMaSP() {
+    public String getMaSP() {
         return MaSP;
     }
 
-    public void setMaSP(int maSP) {
+    public void setMaSP(String maSP) {
         MaSP = maSP;
     }
 

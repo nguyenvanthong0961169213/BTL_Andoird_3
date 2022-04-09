@@ -100,23 +100,5 @@ public class Fragment_home_app extends Fragment {
             }
         });
     }
-    List<Food> update_data_doan()
-    {
-        List<Food> data=new ArrayList<>();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference();
-        databaseReference.child("Food/DoAn").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren()) {
-                    data.add(snap.getValue(Food.class));
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-        return data;
-    }
 
 }

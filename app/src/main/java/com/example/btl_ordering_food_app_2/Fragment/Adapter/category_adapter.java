@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ public class category_adapter extends RecyclerView.Adapter<category_adapter.User
     private List<category_obj> data;
     private Fragment_home mContext;
     public Integer GetID_category;
+    static int row_index=0;
 
     public  category_adapter(Fragment_home mContext){
         this.mContext = mContext;
@@ -46,6 +48,7 @@ public class category_adapter extends RecyclerView.Adapter<category_adapter.User
     }
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+         int k=position;
         category_obj user = data.get(position);
         if(user == null)
         {
@@ -56,10 +59,19 @@ public class category_adapter extends RecyclerView.Adapter<category_adapter.User
         holder.CV_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                row_index=k;
                 mContext.ID_Click(user);
+                notifyDataSetChanged();
+                //holder.CV_category.setBackgroundResource(R.drawable.backgound_category_selected);
             }
         });
+        if (row_index==position) {
+            holder.CV_category.setBackgroundResource(R.drawable.backgound_category_selected);
+        } else {
+            holder.CV_category.setBackgroundResource(R.drawable.btn_nocolor);
+        }
     }
+
     @Override
     public int getItemCount() {
         if(data != null){
@@ -67,7 +79,6 @@ public class category_adapter extends RecyclerView.Adapter<category_adapter.User
         }
         return 0;
     }
-
 
     //3.
     public class UserViewHolder extends RecyclerView.ViewHolder{
@@ -81,6 +92,4 @@ public class category_adapter extends RecyclerView.Adapter<category_adapter.User
             CV_category=itemView.findViewById(R.id.CV_category);
         }
     }
-
-
 }

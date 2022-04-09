@@ -3,13 +3,13 @@ package com.example.btl_ordering_food_app_2.Model;
 import java.io.Serializable;
 
 public class Order  implements Serializable {
-    private int MaSP;
+    private String MaSP;
     private int SoLuong;
     private int GiaTien;
     private String Anh;
     private String TenSP;
 
-    public Order(int maSP, int soLuong, int giaTien, String anh, String tenSP) {
+    public Order(String maSP, int soLuong, int giaTien, String anh, String tenSP) {
         MaSP = maSP;
         SoLuong = soLuong;
         GiaTien = giaTien;
@@ -17,11 +17,11 @@ public class Order  implements Serializable {
         TenSP = tenSP;
     }
 
-    public int getMaSP() {
+    public String getMaSP() {
         return MaSP;
     }
 
-    public void setMaSP(int maSP) {
+    public void setMaSP(String maSP) {
         MaSP = maSP;
     }
 

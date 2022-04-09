@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,10 +65,21 @@ public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHold
         holder.btn_addfood_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(view.getContext(),user.getTenSP()+"Đã Được Thêm Vào Giỏ Hàng !",Toast.LENGTH_LONG).show();
                 mContext.Isenddata.SendData(user);
+            }
+        });
+        holder.CVFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SetDataDescrtptionFood(user);
 
             }
         });
+
+    }
+    private void SetDataDescrtptionFood(Food user) {
+        mContext.GetData(user);
     }
 
     @Override
@@ -111,12 +123,14 @@ public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHold
         private CircleImageView civImgFood;
         private TextView txtNameFood,txtGiaTienFood;
         private Button btn_addfood_cart;
+        private CardView CVFood;
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
             civImgFood = itemView.findViewById(R.id.civ_ImgFood);
             txtNameFood =  itemView.findViewById(R.id.txtNameFood);
             txtGiaTienFood = itemView.findViewById(R.id.txtGiaBanFood);
             btn_addfood_cart=itemView.findViewById(R.id.btn_themsp_cart);
+            CVFood=itemView.findViewById(R.id.CV_food);
         }
     }
 }
