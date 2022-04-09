@@ -11,12 +11,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +49,6 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
     private static final int FRAGMENT_LOGOUT=3;
 
     private int CurrentFragment=FRAGMENT_HOME;
-
     private DrawerLayout drawerLayout;
     final Context context = this;
     TextView txt_Name_drawer,txt_UserName,txt_address,txt_phone_number,txt_sex;
@@ -107,7 +111,6 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
               //CurrentFragment=FRAGMENT_HOME;
         }else if(id==R.id.navigation_update_info_user)
         {
-
             Intent intent_data = getIntent();
             Bundle bundle_data = intent_data.getExtras();
             user_obj user = (user_obj) bundle_data.get("user_obj_data");
@@ -116,13 +119,15 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
             Bundle bundle = new Bundle();
             bundle.putSerializable("user_obj_data_update",(Serializable) user);;
             fragment_update_info_user.setArguments(bundle);//Here pass your data
-
-
             replaceFragment(fragment_update_info_user);
         }else if(id==R.id.navigation_update_password)
         {
             replaceFragment(new Fragment_update_password());
- //           CurrentFragment=FRAGMENT_REMARKABLE;
+        }
+        else if(id==R.id.navigation_logout)
+        {
+            Intent intent=new Intent(getBaseContext(),layout_login.class);
+            startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

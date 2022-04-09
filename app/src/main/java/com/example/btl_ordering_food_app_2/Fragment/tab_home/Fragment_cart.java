@@ -25,11 +25,13 @@ public class Fragment_cart extends Fragment {
     private static RecyclerView rcvOrder;
     private static order_adapter OrderAdapter;
     static List<Order> lstContent;
-
+    public static int TongTien;
+    static TextView txtTongTienOrder;
 
     void Connect_ID(View view)
     {
        // txt_username=view.findViewById(R.id.txt_test);
+        txtTongTienOrder=view.findViewById(R.id.txtTongTienOrder);
     }
     @Nullable
     @Override
@@ -49,9 +51,20 @@ public class Fragment_cart extends Fragment {
 
         OrderAdapter.setData(lstContent);
         rcvOrder.setAdapter(OrderAdapter);
+
+        TongTien = 0;
+        for(Order item : lstContent){
+            TongTien+=item.getGiaTien()*item.getSoLuong();
+        }
+        txtTongTienOrder.setText(String.valueOf(TongTien));
+
         return view;
     }
     public static void receiveDataFromFramentHome(Food food) {
+
+        TongTien += food.getGiaTien();
+        txtTongTienOrder.setText(String.valueOf(TongTien));
+
         boolean check = false;
         for (Order item: lstContent) {
             if (item.getMaSP() == food.getMaSP()){
@@ -70,4 +83,13 @@ public class Fragment_cart extends Fragment {
         }
         check = false;
     }
+    public static void CongTien(Order order){
+        TongTien += order.getGiaTien();
+        txtTongTienOrder.setText(String.valueOf(TongTien));
+    }
+    public static  void TruTien(Order order){
+        TongTien -= order.getGiaTien();
+        txtTongTienOrder.setText(String.valueOf(TongTien));
+    }
+
 }

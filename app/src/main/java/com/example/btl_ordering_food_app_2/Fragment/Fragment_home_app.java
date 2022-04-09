@@ -1,11 +1,16 @@
 package com.example.btl_ordering_food_app_2.Fragment;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.btl_ordering_food_app_2.Fragment.Adapter.food_adapter;
 import com.example.btl_ordering_food_app_2.Fragment.tab_home.ViewPagerAdapter;
 import com.example.btl_ordering_food_app_2.Model.Food;
 import com.example.btl_ordering_food_app_2.R;
@@ -112,4 +118,5 @@ public class Fragment_home_app extends Fragment {
         });
         return data;
     }
+
 }

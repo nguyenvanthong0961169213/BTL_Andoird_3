@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_cart;
 import com.example.btl_ordering_food_app_2.Model.Order;
 import com.example.btl_ordering_food_app_2.R;
 import com.squareup.picasso.Picasso;
@@ -20,9 +21,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class order_adapter extends RecyclerView.Adapter<order_adapter.UserViewHolder> {
     private List<Order> data;
-    private Fragment mContext;
+    private Fragment_cart mContext;
 
-    public order_adapter(Fragment mContext){
+    public order_adapter(Fragment_cart mContext){
         this.mContext = mContext;
     }
     public  void setData(List<Order> list){
@@ -52,6 +53,7 @@ public class order_adapter extends RecyclerView.Adapter<order_adapter.UserViewHo
         holder.btnCongOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mContext.CongTien(user);
                 int SoLuongOrderCu = user.getSoLuong();
                 user.setSoLuong(SoLuongOrderCu+1);
                 holder.txtSoLuong.setText(String.valueOf(user.getSoLuong()));
@@ -60,6 +62,7 @@ public class order_adapter extends RecyclerView.Adapter<order_adapter.UserViewHo
         holder.btnTruOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mContext.TruTien(user);
                 int SoLuongOrderCu = user.getSoLuong();
                 user.setSoLuong(SoLuongOrderCu-1);
                 holder.txtSoLuong.setText(String.valueOf(user.getSoLuong()));

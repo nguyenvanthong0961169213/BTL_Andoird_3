@@ -57,6 +57,7 @@
                     android:background="@drawable/icon_home"/>
             </LinearLayout>
             <TextView
+                android:id="@+id/txtTongTienOrder"
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"

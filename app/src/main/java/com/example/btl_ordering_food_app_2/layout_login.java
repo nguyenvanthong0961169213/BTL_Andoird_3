@@ -71,8 +71,8 @@ public class layout_login extends AppCompatActivity {
         btn_Createaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent =new Intent(context,Layout_signup.class);
-//                startActivity(intent);
+                Intent intent =new Intent(context,Layout_signup.class);
+                startActivity(intent);
             }
         });
         btn_Signin.setOnClickListener(new View.OnClickListener() {
@@ -98,9 +98,9 @@ public class layout_login extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(context,"kaka",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"kaka"+arrUser.get(1).getUserpassword(),Toast.LENGTH_LONG).show();
             }
-            break;
+          //  break;
         }
     }
     void Load_data_login()

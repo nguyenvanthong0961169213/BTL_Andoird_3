@@ -26,5 +26,6 @@
     <string name="btn_update_cancel">Cancel</string>
     <string name="txt_make_sure_password">Make sure you remember your password</string>
     <string name="hint_your_current_password">  Your current password...</string>
+    <string name="action_search">Search</string>
 
 </resources>

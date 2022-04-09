@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,22 +23,16 @@ import com.example.btl_ordering_food_app_2.R;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHolder> {
+public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHolder>
+        implements Filterable {
     private List<Food> data;
     private Fragment_home mContext;
     private Activity activity;
-//
-//    public  food_adapter(Fragment mContext){
-//        this.mContext = mContext;
-//    }
-//    public  void setData(List<Food> list, Activity activity){
-//        this.data = list;
-//        notifyDataSetChanged();
-//        this.activity = activity;
-//    }
+    private List<Food> old_data;
     //private Fragment_home.ISendDataListener Isenddata;
     public  food_adapter(Fragment_home mContext){
         this.mContext = mContext;
@@ -45,6 +41,7 @@ public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHold
         this.data = list;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,11 +64,6 @@ public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHold
         holder.btn_addfood_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent=new Intent(activity, Layout_main.class);
-//                Bundle bundle=new Bundle();
-//                bundle.putSerializable("data", (Serializable) user);
-//                intent.putExtras(bundle);
-//                activity.startActivity(intent);
                 mContext.Isenddata.SendData(user);
 
             }
@@ -84,6 +76,35 @@ public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHold
             return data.size();
         }
         return 0;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String searchString = constraint.toString();
+                if (searchString.isEmpty()) {
+                    data = old_data;
+                } else {
+                    List<Food> foodList = new ArrayList<>();
+                    for (Food food : old_data) {
+                        if (food.getTenSP().toLowerCase().contains(searchString.toLowerCase())) {
+                            foodList.add(food);
+                        }
+                    }
+                    data = foodList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = data;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                data = (List<Food>) filterResults.values;
+            }
+        };
     }
 
     public class UserViewHolder extends RecyclerView.ViewHolder{

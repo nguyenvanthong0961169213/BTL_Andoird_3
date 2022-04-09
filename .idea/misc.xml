@@ -30,16 +30,17 @@
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/activity_order.xml" value="0.21" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/avtivity_food.xml" value="0.21" />
-        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_cart.xml" value="0.1" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_cart.xml" value="0.22" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_home_app.xml" value="0.20416666666666666" />
-        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_remarkable.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_remarkable.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_info.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_info_user.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/fragment_update_password.xml" value="0.22" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/layout/layout_header_info_user.xml" value="0.25" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/menu/menu_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/menu/menu_navigation.xml" value="0.20416666666666666" />
+        <entry key="..\:/Code_Android/BTL_orderingfood_app_2/app/src/main/res/menu/menu_searchview.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
