@@ -91,7 +91,7 @@ public class layout_login extends AppCompatActivity {
                     && edt_password.getText().toString().trim().equals(user.getUserpassword())) {
                 Intent intent=new Intent(context,Layout_main.class);
                 Bundle bundle=new Bundle();
-                bundle.putSerializable("user_obj_data",(Serializable) user);;
+                bundle.putSerializable("user_obj_data",(Serializable) user);
                 //Đăt bunler lên intent
                 intent.putExtras(bundle);
                 startActivity(intent);

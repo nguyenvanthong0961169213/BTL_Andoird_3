@@ -73,8 +73,8 @@ public class Fragment_home extends Fragment {
         lstContent= new ArrayList<>();
         lstContent.add(new category_obj(1,"Đồ Ăn",R.drawable.icon_com));
         lstContent.add(new category_obj(2,"Đồ Uống",R.drawable.icon_douong));
-        lstContent.add(new category_obj(3,"Ăn Vặt",R.drawable.icon_home));
-        lstContent.add(new category_obj(4,"Ăn Nhanh",R.drawable.icon_home));
+        lstContent.add(new category_obj(3,"Ăn Vặt",R.drawable.icon_doanvat));
+        lstContent.add(new category_obj(4,"Ăn Nhanh",R.drawable.icon_doannhanh));
 
         category_adapter.setData(lstContent);
         rcvCategory.setAdapter(category_adapter);
@@ -91,10 +91,6 @@ public class Fragment_home extends Fragment {
         food_adapter.setData(lst_food);
         rcvTypeFood.setAdapter(food_adapter);
         update_data_doan("DoAn");
-
-        //Bắt sự kiện click_category
-        //registerForContextMenu(rcvCategory);
-
         return view;
 
 
@@ -154,8 +150,14 @@ public class Fragment_home extends Fragment {
         else if(category_obj.getID()==2)
         {
             lst_food=new ArrayList<>();
-            update_data_doan("DoUong");
             food_adapter.setData(lst_food);
+            update_data_doan("DoUong");
+        }
+        else if(category_obj.getID()==3)
+        {
+            lst_food=new ArrayList<>();
+            food_adapter.setData(lst_food);
+            update_data_doan("DoAnVat");
         }
 
     }
