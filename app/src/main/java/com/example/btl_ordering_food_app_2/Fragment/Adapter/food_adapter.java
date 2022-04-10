@@ -65,7 +65,7 @@ public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHold
         holder.btn_addfood_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),user.getTenSP()+"Đã Được Thêm Vào Giỏ Hàng !",Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(),user.getTenSP()+" Đã Được Thêm Vào Giỏ Hàng.",Toast.LENGTH_LONG).show();
                 mContext.Isenddata.SendData(user);
             }
         });

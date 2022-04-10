@@ -9,22 +9,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:orientation="vertical">
+        android:orientation="vertical"
+       >
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="280dp"
             android:scaleType="centerCrop"
             android:id="@+id/ImgFoodDescription"
-            android:contentDescription="TODO"></ImageView>
+            android:contentDescription="TODO"/>
 
-        <TextView
-            android:id="@+id/txtTenFoodDescription"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></TextView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtGiaBanFoodDescription"></TextView>
+            android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTenFoodDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên Đồ Ăn"
+                android:textSize="35dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtGiaBanFoodDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giá Đồ Ăn"
+                android:textSize="20dp"
+                android:gravity="center"/>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -34,7 +50,7 @@
                 android:id="@+id/txtFoodDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"></TextView>
+                android:textSize="20sp"/>
 
             <Button
                 android:id="@+id/btn_themsp_Description"
@@ -46,16 +62,16 @@
                 android:text="+"
                 android:textColor="@color/white"
                 android:textSize="15dp"
-                tools:ignore="TouchTargetSizeCheck"></Button>
+                tools:ignore="TouchTargetSizeCheck"/>
         </LinearLayout>
 
         <Button
             android:id="@+id/btnThoatFoodDescription"
-            android:layout_width="57dp"
-            android:layout_height="50dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
             android:background="@drawable/btncongtru"
-            android:text="Cancel"
+            android:text="Back"
 
-            ></Button>
+            />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

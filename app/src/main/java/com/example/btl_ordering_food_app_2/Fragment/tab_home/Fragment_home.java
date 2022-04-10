@@ -156,8 +156,6 @@ public class Fragment_home extends Fragment {
     }
     public void ID_Click(category_obj category_obj)
     {
-      //  Selected_category=category_obj;
-        Toast.makeText(getContext(),""+category_obj.getName(),Toast.LENGTH_LONG).show();
         if(category_obj.getID()==1)
         {
             lst_food=new ArrayList<>();
