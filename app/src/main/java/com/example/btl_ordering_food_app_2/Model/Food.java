@@ -8,14 +8,16 @@ public class Food implements Serializable {
     private int GiaTien;
     private String Anh;
     private String TenSP;
+    private String ThanhPhan;
 
     //Contructors
     public Food(){}
-    public Food(String maSP, int giaTien, String anh, String tenSP) {
+    public Food(String maSP, int giaTien, String anh, String tenSP,String thanhphan) {
         MaSP = maSP;
         GiaTien = giaTien;
         Anh = anh;
         TenSP = tenSP;
+        ThanhPhan=thanhphan;
     }
 
     //Getters and Setter
@@ -49,6 +51,14 @@ public class Food implements Serializable {
 
     public void setTenSP(String tenSP) {
         TenSP = tenSP;
+    }
+
+    public String getThanhPhan() {
+        return ThanhPhan;
+    }
+
+    public void setThanhPhan(String thanhPhan) {
+        ThanhPhan = thanhPhan;
     }
 
 

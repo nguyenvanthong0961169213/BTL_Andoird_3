@@ -18,7 +18,7 @@ import java.io.Serializable;
 
 public class FoodDescriptionActivity extends AppCompatActivity {
     ImageView imgFoodDesception;
-    TextView txtTenFoodDesception,txtGiaBanFoodDesception;
+    TextView txtTenFoodDesception,txtGiaBanFoodDesception,txtThanhPhanFoodDescription;
     Button btnThemSpFoodDescription,btnThoatFoodDescription;
     static int id = 0;
     static Food food ;
@@ -31,6 +31,7 @@ public class FoodDescriptionActivity extends AppCompatActivity {
         btnThemSpFoodDescription = findViewById(R.id.btn_themsp_Description);
         btnThoatFoodDescription = findViewById(R.id.btnThoatFoodDescription);
         txtGiaBanFoodDesception = findViewById(R.id.txtGiaBanFoodDescription);
+        txtThanhPhanFoodDescription=findViewById(R.id.txtThanhPhanFoodDescription);
         food = new Food();
         SetData();
 
@@ -61,6 +62,7 @@ public class FoodDescriptionActivity extends AppCompatActivity {
         Picasso.get().load(food.getAnh()).into(imgFoodDesception);
         txtTenFoodDesception.setText(food.getTenSP());
         txtGiaBanFoodDesception.setText(String.valueOf(food.getGiaTien()));
+        txtThanhPhanFoodDescription.setText("Thành Phần: "+food.getThanhPhan());
     }
     public void AddOrder(Food food){
         Fragment_cart fragment_cart = (Fragment_cart) getSupportFragmentManager().findFragmentById(R.id.navigation_cart);
