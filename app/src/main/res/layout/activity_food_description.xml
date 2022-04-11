@@ -41,7 +41,6 @@
                 android:textSize="25dp"
                 android:textStyle="italic"
                 android:gravity="center"/>
-
             <TextView
                 android:id="@+id/txtThanhPhanFoodDescription"
                 android:layout_width="match_parent"

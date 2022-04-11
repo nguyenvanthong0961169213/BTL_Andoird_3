@@ -174,6 +174,12 @@ public class Fragment_home extends Fragment {
             food_adapter.setData(lst_food);
             update_data_doan("DoAnVat");
         }
+        else if(category_obj.getID()==4)
+        {
+            lst_food=new ArrayList<>();
+            food_adapter.setData(lst_food);
+            update_data_doan("DoAnNhanh");
+        }
 
     }
     public void GetData(Food food){

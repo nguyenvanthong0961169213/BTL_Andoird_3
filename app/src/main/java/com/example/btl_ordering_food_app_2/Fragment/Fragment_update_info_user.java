@@ -43,6 +43,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -76,6 +77,7 @@ public class Fragment_update_info_user extends Fragment {
         rdo_male=view.findViewById(R.id.rdo_male);
         rdo_female=view.findViewById(R.id.rdo_female);
         btn_update_confirm=view.findViewById(R.id.btn_update_confirm);
+
     }
     void update_data_user()
     {
@@ -85,6 +87,8 @@ public class Fragment_update_info_user extends Fragment {
           edt_Name_update.setText(user.getName());
           edt_PhoneNumber_update.setText(user.getPhonenumber());
           edt_address_update.setText(user.getAddress());
+          Picasso.get().load(user.getAvatar()).into(circleImageView);
+          avatar_user=user.getAvatar();
           if (user.isSex()) {
                 rdo_male.setChecked(true);
           }else {
@@ -96,7 +100,6 @@ public class Fragment_update_info_user extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_update_info_user,container,false);
         Connect_ID(view);
-        //Load_data();
 
         update_data_user();
         Intent intent_cancel = new Intent(getContext(),Layout_main.class);
@@ -131,7 +134,7 @@ public class Fragment_update_info_user extends Fragment {
                                 DatabaseReference databaseReference_update = firebaseDatabase.getReference();
                                 user_obj user_update=new user_obj(info_user.getId(),edt_Name_update.getText().toString().trim(),
                                         edt_PhoneNumber_update.getText().toString().trim(),edt_address_update.getText().toString().trim(),
-                                        (rdo_male.isChecked())?true:false,info_user.getUserpassword(),""+avatar_user);
+                                        (rdo_male.isChecked())?true:false,info_user.getUserpassword(),avatar_user);
                                 databaseReference_update.child("User").child(snap.getKey()).setValue(user_update, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
@@ -172,7 +175,7 @@ public class Fragment_update_info_user extends Fragment {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent,"chọn ảnh"),124);
-                upload_image(view);
+                //upload_image(view);
 
             }
         });
@@ -192,6 +195,7 @@ public class Fragment_update_info_user extends Fragment {
             assert data!=null;
             imageuri=data.getData();
             circleImageView.setImageURI(imageuri);
+            //Picasso.get().load(imageuri).into(circleImageView);
         }
     }
     private void upload_image(View view)
@@ -202,6 +206,7 @@ public class Fragment_update_info_user extends Fragment {
         FirebaseStorage storage= FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
         final String randomkey= UUID.randomUUID().toString();
+       // String timestamp = "" + System.currentTimeMillis();
         StorageReference riversRef = storageReference.child("images/" + randomkey);
 
 // Register observers to listen for when the download is done or if it fails
@@ -210,11 +215,10 @@ public class Fragment_update_info_user extends Fragment {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Task<Uri> avatar = taskSnapshot.getStorage().getDownloadUrl();
-                        //avatar_user=avatar.getResult().toString();
-
                         while (!avatar.isCanceled()){
-                            Uri dowload = avatar.getResult();
+                            // Uri dowload = avatar.getResult();
                             //avatar_user=dowload.toString();
+                            //avatar_user=avatar.getResult().toString();
                         }
                         pd.dismiss();
                         Snackbar.make(view.findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG).show();
@@ -234,26 +238,5 @@ public class Fragment_update_info_user extends Fragment {
                           pd.setMessage("Percentage: "+(int) ProgressPercent +"%");
                     }
                 });
-
-
     }
-//    void Load_data()
-//    {
-//        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-//        DatabaseReference databaseReference=firebaseDatabase.getReference();
-//
-//        databaseReference.child("User/0").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//               user_obj data_user_obj=new user_obj();
-//               data_user_obj= snapshot.getValue(user_obj.class);
-//               txt_name.setText(data_user_obj.getName());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 }

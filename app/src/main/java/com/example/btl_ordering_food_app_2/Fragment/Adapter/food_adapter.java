@@ -61,7 +61,7 @@ public class food_adapter extends RecyclerView.Adapter<food_adapter.UserViewHold
        // holder.civImgFood.setImageResource(user.getAnh());
         Picasso.get().load(user.getAnh()).into(holder.civImgFood);
         holder.txtNameFood.setText(user.getTenSP());
-        holder.txtGiaTienFood.setText(String.valueOf(user.getGiaTien()));
+        holder.txtGiaTienFood.setText(user.getGiaTien()+" đ");
         holder.btn_addfood_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

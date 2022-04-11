@@ -30,7 +30,7 @@ public class Fragment_remarkable extends Fragment {
             SetImageFlip(item);
         }
         int Image_2[] = {R.drawable.qc2 , R.drawable.qc3 , R.drawable.qc1};
-        for (int item : Image) {
+        for (int item : Image_2) {
             SetImageFlip_2(item);
         }
         return view;
