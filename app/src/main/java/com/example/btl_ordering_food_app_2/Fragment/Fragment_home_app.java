@@ -53,6 +53,7 @@ public class Fragment_home_app extends Fragment {
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(1);
+        viewPager.setOffscreenPageLimit(3);
         bottomNavigationView.getMenu().findItem(R.id.navigation_home).setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

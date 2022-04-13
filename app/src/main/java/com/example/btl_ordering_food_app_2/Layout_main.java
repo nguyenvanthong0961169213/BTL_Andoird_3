@@ -30,6 +30,7 @@ import com.example.btl_ordering_food_app_2.Fragment.Fragment_update_password;
 import com.example.btl_ordering_food_app_2.Fragment.Fragment_home_app;
 import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_cart;
 import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_home;
+import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_remarkable;
 import com.example.btl_ordering_food_app_2.Model.Food;
 import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.google.android.material.navigation.NavigationView;
@@ -41,19 +42,18 @@ import java.net.URL;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Layout_main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-, Fragment_home.ISendDataListener {
+, Fragment_home.ISendDataListener, Fragment_remarkable.ISendDataListener {
 
     private static final int FRAGMENT_HOME=0;
     private static final int FRAGMENT_UPDATE_INFO_USER=1;
     private static final int FRAGMENT_UPDATE_INFO_PASSWORD=2;
     private static final int FRAGMENT_LOGOUT=3;
-
     private int CurrentFragment=FRAGMENT_HOME;
     private DrawerLayout drawerLayout;
     final Context context = this;
     TextView txt_Name_drawer,txt_UserName,txt_address,txt_phone_number,txt_sex;
     CircleImageView image_user_drawer;
-
+    public static String MaKh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +99,7 @@ public class Layout_main extends AppCompatActivity implements NavigationView.OnN
         txt_phone_number.setText(user.getPhonenumber());
         txt_address.setText(user.getAddress());
         txt_sex.setText(user.isSex()?"Nam":"Nữ");
+        MaKh=user.getId();
 
     }
 

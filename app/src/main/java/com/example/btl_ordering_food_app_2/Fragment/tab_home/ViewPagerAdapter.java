@@ -33,7 +33,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new Fragment_home();
         }
     }
-
     @Override
     public int getCount() {
         return 3;

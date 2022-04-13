@@ -76,7 +76,7 @@
 
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvbuyItem"
+            android:id="@+id/rcvHoaDon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

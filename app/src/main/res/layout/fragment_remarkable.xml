@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,25 +28,17 @@
             android:inAnimation="@anim/quangcaoin"
             android:outAnimation="@anim/quangcaoout"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tiêu Điểm Tháng"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            />
-        <ViewFlipper
-            android:id="@+id/vfQuangCao_2"
+        <EditText
+            android:id="@+id/filterEditText"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:autoStart="true"
-            android:flipInterval="3000"
-            android:inAnimation="@anim/quangcaoin"
-            android:outAnimation="@anim/quangcaoout"
-            >
-        </ViewFlipper>
+            android:layout_height="wrap_content"
+            android:hint="Type"
+            android:minHeight="48dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvTypeFoodRemarkable"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            />
     </LinearLayout>
 </ScrollView>
