@@ -1,61 +1,47 @@
 package com.example.btl_ordering_food_app_2.Fragment.Adapter;
 
-import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl_ordering_food_app_2.HDactivity;
-import com.example.btl_ordering_food_app_2.Model.Food;
 import com.example.btl_ordering_food_app_2.Model.Invoice;
-import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_cart;
-import com.example.btl_ordering_food_app_2.Fragment.tab_home.Fragment_remarkable;
+import com.example.btl_ordering_food_app_2.Model.Invoice_detail;
 import com.example.btl_ordering_food_app_2.R;
-import java.util.List;
-import de.hdodenhof.circleimageview.CircleImageView;
-public class invoice_adapter  extends RecyclerView.Adapter<invoice_adapter.UserViewHolder> {
-    private List<Invoice> data;
-    private HDactivity mContext;
+import com.example.btl_ordering_food_app_2.activity_cthd_invoice;
 
-    public invoice_adapter(List<Invoice> data, HDactivity mContext) {
+import java.util.List;
+
+public class invoice_detail_adapter extends RecyclerView.Adapter<invoice_detail_adapter.UserViewHolder>{
+    private List<Invoice_detail> data;
+    private activity_cthd_invoice mContext;
+
+    public invoice_detail_adapter(List<Invoice_detail> data, activity_cthd_invoice mContext) {
         this.data = data;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_invoice,parent,false);
-        return new UserViewHolder(view);
+        return new invoice_detail_adapter.UserViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        Invoice user = data.get(position);
+        Invoice_detail user = data.get(position);
         if(user == null)
         {
             return;
         }
-
-        holder.txtGiaTienHD.setText(String.valueOf(user.getGiaTien()));
-        holder.txtMAHD.setText(user.getMaHD());
-        holder.CVHoaDon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SetDataDescrtptionFood(user);
-            }
-        });
-
-    }
-    public void SetDataDescrtptionFood(Invoice invoice){
-        mContext.GetData(invoice);
+        holder.txtGiaTienHD.setText(user.getMaSP());
+        holder.txtMAHD.setText(String.valueOf(user.getSoLuong()));
     }
 
     @Override
@@ -66,6 +52,7 @@ public class invoice_adapter  extends RecyclerView.Adapter<invoice_adapter.UserV
         return 0;
     }
 
+
     public class UserViewHolder extends RecyclerView.ViewHolder{
 
         private TextView txtMAHD,txtGiaTienHD;
@@ -73,7 +60,6 @@ public class invoice_adapter  extends RecyclerView.Adapter<invoice_adapter.UserV
         private CardView CVHoaDon;
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
-
             txtMAHD =  itemView.findViewById(R.id.txtMaHD);
             txtGiaTienHD = itemView.findViewById(R.id.txtGiaTienHD);
             CVHoaDon = itemView.findViewById(R.id.CVHoaDon);

@@ -1,5 +1,6 @@
 package com.example.btl_ordering_food_app_2.Fragment.tab_home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btl_ordering_food_app_2.Fragment.Adapter.invoice_adapter;
 import com.example.btl_ordering_food_app_2.Fragment.Adapter.order_adapter;
+import com.example.btl_ordering_food_app_2.HDactivity;
 import com.example.btl_ordering_food_app_2.Layout_main;
 import com.example.btl_ordering_food_app_2.Model.Food;
 import com.example.btl_ordering_food_app_2.Model.Invoice;
+import com.example.btl_ordering_food_app_2.Model.Invoice_detail;
 import com.example.btl_ordering_food_app_2.Model.Order;
 import com.example.btl_ordering_food_app_2.Model.user_obj;
 import com.example.btl_ordering_food_app_2.R;
@@ -40,14 +43,15 @@ public class Fragment_cart extends Fragment {
     static TextView txtTongTienOrder;
     static List<Invoice> lstContentHD;
     private invoice_adapter invoiceAdapter;
-    Button btnMua;
+    Button btnMua,btnHD;
 
     void Connect_ID(View view)
     {
        // txt_username=view.findViewById(R.id.txt_test);
         txtTongTienOrder=view.findViewById(R.id.txtTongTienOrder);
         btnMua = view.findViewById(R.id.btnMua);
-        rcvHoaDon = view.findViewById(R.id.rcvHoaDon);
+        btnHD = view.findViewById(R.id.btnHdb);
+//        rcvHoaDon = view.findViewById(R.id.rcvHoaDon);
     }
     @Nullable
     @Override
@@ -67,6 +71,16 @@ public class Fragment_cart extends Fragment {
             TongTien+=item.getGiaTien()*item.getSoLuong();
         }
         txtTongTienOrder.setText(String.valueOf(TongTien));
+        load_data_invoice(Layout_main.MaKh);
+        load_data_invoice_detail();
+        btnHD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HDactivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
 //        lstContentHD=new ArrayList<>();
@@ -78,19 +92,17 @@ public class Fragment_cart extends Fragment {
 //        invoiceAdapter= new invoice_adapter(lstContentHD,this);
 //        rcvHoaDon.setAdapter(invoiceAdapter);
 //
-//        btnMua.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-
-//                lstContentHD = new ArrayList<>();
-//                invoiceAdapter.notifyDataSetChanged();
-//                rcvHoaDon.setAdapter(invoiceAdapter);
+        btnMua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 update_data_invoiced();
-//                load_data_invoice(Layout_main.MaKh);
-
-
-//            }
-//        });
+                update_data_detail_invoiced((Layout_main.MaKh+"_HDB_"+h));
+                lstContent=new ArrayList<>();
+                OrderAdapter.setData(lstContent);
+                TongTien = 0;
+                txtTongTienOrder.setText(String.valueOf(TongTien));
+            }
+        });
         return view;
     }
     public static void receiveDataFromFramentHome(Food food) {
@@ -124,44 +136,46 @@ public class Fragment_cart extends Fragment {
         TongTien -= order.getGiaTien();
         txtTongTienOrder.setText(String.valueOf(TongTien));
     }
-    Invoice invoice;
+    Invoice invoice,invoice_all;
+    int dem;
     void load_data_invoice(String Id_user)
     {
-
+        dem =0;
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
-
         databaseReference.child("Invoice").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 for (DataSnapshot snap : snapshot.getChildren()) {
-                    invoice=(snap.getValue(Invoice.class));
-                    if(invoice.getMaKH().equals(Id_user))
+                    dem++;
+                    invoice_all=(snap.getValue(Invoice.class));
+                    if(invoice_all.getMaKH().equals(Id_user))
                     {
-                       lstContentHD.add(snap.getValue(Invoice.class));
+                        invoice=invoice_all;
                     }
                 }
-                invoiceAdapter.notifyDataSetChanged();
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
+    int h ;
     void update_data_invoiced() {
-
         String MaHD=invoice.getMaHD();
         String k = CatChuoi(MaHD);
+        h =Integer.parseInt(k)+1;
+        Toast.makeText(getContext(),"Cập Nhật Thành Công !!!"+MaHD,Toast.LENGTH_LONG).show();
         int h=Integer.parseInt(k)+1;
-        Invoice invoice=new Invoice((Layout_main.MaKh+"_HDB_"+h),Integer.parseInt(String.valueOf(txtTongTienOrder.getText())),Layout_main.MaKh);
+        Invoice invoice=new Invoice((Layout_main.MaKh+"_HDB_"+h),Integer.parseInt(String.valueOf
+                (txtTongTienOrder.getText())),Layout_main.MaKh);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
-        databaseReference.child("Invoice").child(""+h).setValue(invoice, new DatabaseReference.CompletionListener() {
+        databaseReference.child("Invoice").child(""+dem).setValue(invoice, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                 Toast.makeText(getContext(),"Cập Nhật Thành Công !!!",Toast.LENGTH_LONG).show();
+
             }
 
         });
@@ -169,5 +183,40 @@ public class Fragment_cart extends Fragment {
     public String CatChuoi(String MaHD) {
         String[] splits = MaHD.split("_");
        return splits[2];
+    }
+    int dem_cthd;
+    void load_data_invoice_detail()
+    {
+        dem_cthd=0;
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
+        databaseReference.child("Invoice_detail").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    dem_cthd++;
+                }
+                Toast.makeText(getContext(),"Đem_cthd"+dem_cthd,Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+    void update_data_detail_invoiced(String maHD)
+    {
+        for(Order item:lstContent)
+        {
+            Invoice_detail invoice_detail=new Invoice_detail(maHD,item.getSoLuong(),item.getMaSP());
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = firebaseDatabase.getReference();
+            databaseReference.child("Invoice_detail").child(""+(dem_cthd+1)).setValue(invoice_detail, new DatabaseReference.CompletionListener() {
+                @Override
+                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                    Toast.makeText(getContext(),"Cập Nhật Thành Công !!!",Toast.LENGTH_LONG).show();
+                }
+
+            });
+        }
     }
 }

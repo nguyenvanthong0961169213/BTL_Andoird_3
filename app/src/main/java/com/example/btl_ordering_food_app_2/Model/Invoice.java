@@ -1,6 +1,8 @@
 package com.example.btl_ordering_food_app_2.Model;
 
-public class Invoice {
+import java.io.Serializable;
+
+public class Invoice implements Serializable {
     String MaHD;
     int GiaTien;
     String MaKH;

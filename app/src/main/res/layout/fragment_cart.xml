@@ -75,11 +75,12 @@
                 ></Button>
 
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvHoaDon"
+        <Button
+            android:id="@+id/btnHdb"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btnorder"
+            android:text="Mua"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

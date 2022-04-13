@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BTL_orderingfood_app_2">
         <activity
+            android:name=".activity_cthd_invoice"
+            android:exported="false" />
+        <activity
+            android:name=".HDactivity"
+            android:exported="false" />
+        <activity
             android:name=".FoodDescriptionActivity"
             android:exported="false" />
         <activity
