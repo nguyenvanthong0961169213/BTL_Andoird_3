@@ -84,11 +84,9 @@ public class Fragment_home extends Fragment {
 
         category_adapter_data.setData(lstContent);
         rcvCategory.setAdapter(category_adapter_data);
-
-      rcvCategory.setOnClickListener(new View.OnClickListener() {
+       rcvCategory.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-             // rcvCategory.getAdapter().oncl;
           }
       });
         //lstContent.

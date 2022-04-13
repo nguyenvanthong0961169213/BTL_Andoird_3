@@ -38,8 +38,7 @@ public class Fragment_cart extends Fragment {
     static List<Order> lstContent;
     public static int TongTien;
     static TextView txtTongTienOrder;
-    private List<Invoice> lstContent1;
-    List<Invoice> lstContent_check_size;
+    static List<Invoice> lstContentHD;
     private invoice_adapter invoiceAdapter;
     Button btnMua;
 
@@ -55,8 +54,7 @@ public class Fragment_cart extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_cart,container,false);
         Connect_ID(view);
-
-        Toast.makeText(getContext(),"hello",Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Hello", Toast.LENGTH_SHORT).show();
         rcvOrder = view.findViewById(R.id.rcvCart);
         OrderAdapter = new order_adapter(this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),1);
@@ -71,31 +69,28 @@ public class Fragment_cart extends Fragment {
         txtTongTienOrder.setText(String.valueOf(TongTien));
 
 
-        GridLayoutManager gridLayoutManagerHD = new GridLayoutManager(getActivity(),1);
-        rcvHoaDon.setLayoutManager(gridLayoutManagerHD);
-        invoiceAdapter= new invoice_adapter(lstContent1,this);
-        rcvHoaDon.setAdapter(invoiceAdapter);
-       // load_data_invoice(Layout_main.MaKh);
-        update_data_invoiced();
-        btnMua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        lstContentHD=new ArrayList<>();
+
+//        load_data_invoice(Layout_main.MaKh);
+//        GridLayoutManager gridLayoutManagerHD = new GridLayoutManager(getActivity(),1);
+//        rcvHoaDon.setLayoutManager(gridLayoutManagerHD);
+//
+//        invoiceAdapter= new invoice_adapter(lstContentHD,this);
+//        rcvHoaDon.setAdapter(invoiceAdapter);
+//
+//        btnMua.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+
+//                lstContentHD = new ArrayList<>();
+//                invoiceAdapter.notifyDataSetChanged();
+//                rcvHoaDon.setAdapter(invoiceAdapter);
                 update_data_invoiced();
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference databaseReference = firebaseDatabase.getReference();
-                //k=Integer.parseInt(lstContent_check_size.get(0).getMaKH());
-                String res="HDB_"+(k);
-                Invoice invoice=new Invoice(res,Integer.parseInt(txtTongTienOrder.getText().toString().trim()),Layout_main.MaKh);
-               databaseReference.child("Invoice").child(""+(k)).setValue(invoice, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                   }
-                });
-                //update_data_invoice(Layout_main.MaKh);
-               // load_data_invoice(Layout_main.MaKh);
-                invoiceAdapter.notifyDataSetChanged();
-            }
-        });
+//                load_data_invoice(Layout_main.MaKh);
+
+
+//            }
+//        });
         return view;
     }
     public static void receiveDataFromFramentHome(Food food) {
@@ -129,49 +124,50 @@ public class Fragment_cart extends Fragment {
         TongTien -= order.getGiaTien();
         txtTongTienOrder.setText(String.valueOf(TongTien));
     }
+    Invoice invoice;
     void load_data_invoice(String Id_user)
     {
-        lstContent1 = new ArrayList<>();
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
+
         databaseReference.child("Invoice").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot snap : snapshot.getChildren()) {
-                    Invoice invoice=(snap.getValue(Invoice.class));
+                    invoice=(snap.getValue(Invoice.class));
                     if(invoice.getMaKH().equals(Id_user))
                     {
-                        lstContent1.add(snap.getValue(Invoice.class));
-
+                       lstContentHD.add(snap.getValue(Invoice.class));
                     }
-                    //Toast.makeText(getContext(),invoice.getMaHD(),Toast.LENGTH_LONG).show();
                 }
-               invoiceAdapter.notifyDataSetChanged();
+                invoiceAdapter.notifyDataSetChanged();
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
-    public static int k=0;
-    public  static int old=k;
     void update_data_invoiced() {
-        //update dữ liệu
-        lstContent_check_size=new ArrayList<>();
+
+        String MaHD=invoice.getMaHD();
+        String k = CatChuoi(MaHD);
+        int h=Integer.parseInt(k)+1;
+        Invoice invoice=new Invoice((Layout_main.MaKh+"_HDB_"+h),Integer.parseInt(String.valueOf(txtTongTienOrder.getText())),Layout_main.MaKh);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
-        databaseReference.child("Invoice").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Invoice").child(""+h).setValue(invoice, new DatabaseReference.CompletionListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren()) {
-                    lstContent_check_size.add(snap.getValue(Invoice.class));
-                }
-               k=lstContent_check_size.size();
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                Toast.makeText(getContext(),"Cập Nhật Thành Công !!!",Toast.LENGTH_LONG).show();
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
         });
+    }
+    public String CatChuoi(String MaHD) {
+        String[] splits = MaHD.split("_");
+       return splits[2];
     }
 }
